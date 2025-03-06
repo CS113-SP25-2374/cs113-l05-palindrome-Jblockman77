@@ -13,18 +13,29 @@ public class Palindrome {
      */
     public boolean isPalindrome(String s) {
         boolean isAPalindrome = true;
+
+        //These are just requirement for LeetCode, because I noticed that this had a same problem, and I wanted to check the runtime/time complexity of this. 24ms beats 11.47%
+        //s= s.replaceAll("\\s+","");
+        //s = s.replaceAll("[^A-Za-z 0-9]+", "");
+        //s = s.toLowerCase();
         int mid = (int) (s.length()/2);
-        StackRL<String> firstStack = new StackRL<String>();
-        StackRL<String> reverseStack = new StackRL<String>();
+        StackRL<String> firstStack = new StackRL<>();
+        StackRL<String> reverseStack = new StackRL<>();
         for(int i = 0; i<mid; i++){
-            firstStack.push(s.substring(i, i));
+            firstStack.push(s.substring(i, i+1));
         }
-        s = s.substring(mid);
+        if(s.length() % 2 == 1){
+            s = s.substring(mid+1);
+        }else{
+            s = s.substring(mid);
+        }
+
         for(int j = 0; j<mid; j++){
-            reverseStack.push(s.substring(j, j));
+            reverseStack.push(s.substring(j, j+1));
+            if(!reverseStack.peek().equals(firstStack.pop())){
+                isAPalindrome = false;
+            }
         }
-        System.out.println(firstStack);
-        System.out.println(reverseStack);
 
         return isAPalindrome;
     }
