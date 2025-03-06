@@ -5,7 +5,9 @@ public interface StackInterface<E> {
      *
      * @return true if empty, false otherwise
      */
-    public boolean empty();
+    public boolean isEmpty();
+
+    public int size();
 
     /**
      * Returns the object at the top of the stack without removing it

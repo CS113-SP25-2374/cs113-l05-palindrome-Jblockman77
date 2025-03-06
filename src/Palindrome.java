@@ -12,6 +12,20 @@ public class Palindrome {
      * @return true if they are the same
      */
     public boolean isPalindrome(String s) {
-        return true;
+        boolean isAPalindrome = true;
+        int mid = (int) (s.length()/2);
+        StackRL<String> firstStack = new StackRL<String>();
+        StackRL<String> reverseStack = new StackRL<String>();
+        for(int i = 0; i<mid; i++){
+            firstStack.push(s.substring(i, i));
+        }
+        s = s.substring(mid);
+        for(int j = 0; j<mid; j++){
+            reverseStack.push(s.substring(j, j));
+        }
+        System.out.println(firstStack);
+        System.out.println(reverseStack);
+
+        return isAPalindrome;
     }
 }
